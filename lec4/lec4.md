@@ -55,6 +55,9 @@ Hardware threads: Intel Hyper-Threading technology (HT), AMD SMT. They split one
 
 > **Data Race**: variable `count_` is in shared memory and if multiple threads write to this variable we encounter inconsistent and wrong results. We write to `count_` in the `increment()` method which is not ***thread-safe***.
 
+>[!NOTE]
+> *The Fundamental Law of Synchronization*: If two or more threads concurrently access a non-atomic object in memory, then all such accesses must be reads. Otherwise, the program invokes undefined behavior.
+
 2. How to fix?
 > **Atomic Operation**: An atomic operation is an operation that will always be executed without any other thread being able to read or change its state during the operation. With OpenMP, we can use the `#pragma omp atomic` directive to make the `increment()` method thread-safe.
 
