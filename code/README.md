@@ -17,7 +17,19 @@ OpenMP requires LLVM with `clang` that supports the OpenMP library. macOS's defa
 brew install llvm
 ```
 
-### Step 2: Configure Your Environment
+### Step 2: Compiling Project
+
+The Makefiles will specify the Homebrew-installed `clang` compiler and necessary flags for OpenMP as follows:
+
+```makefile
+CC=/opt/homebrew/opt/llvm/bin/clang
+CXX=/opt/homebrew/opt/llvm/bin/clang++
+CFLAGS=-fopenmp
+LDFLAGS=-L/opt/homebrew/opt/llvm/lib -Wl,-rpath,/opt/homebrew/opt/llvm/lib
+CPPFLAGS=-I/opt/homebrew/opt/llvm/include
+```
+
+### (Optional) Step 3: Configure Your Environment  (Again, only if it's not your first time!)
 
 To use the Homebrew-installed LLVM, you need to add it to your `PATH`, and set `LDFLAGS` and `CPPFLAGS` to help the compiler and linker find the correct libraries and include files:
 
@@ -41,21 +53,6 @@ After adding these lines, apply the changes:
 source ~/.zshrc
 ```
 
-### Step 3: Compiling Project
-
-The Makefiles will specify the Homebrew-installed `clang` compiler and necessary flags for OpenMP as follows:
-
-```makefile
-CC=/opt/homebrew/opt/llvm/bin/clang
-CXX=/opt/homebrew/opt/llvm/bin/clang++
-CFLAGS=-fopenmp
-LDFLAGS=-L/opt/homebrew/opt/llvm/lib -Wl,-rpath,/opt/homebrew/opt/llvm/lib
-CPPFLAGS=-I/opt/homebrew/opt/llvm/include
-
-# Example target
-program_name: program_name.cpp
-    $(CXX) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o program_name program_name.cpp
-```
 
 ## Usage
 
