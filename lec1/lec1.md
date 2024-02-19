@@ -63,7 +63,7 @@ In response to these challenges, Moore's Law has been reinterpreted from a focus
 - **Parallel Computing:** The increase in cores necessitates advancements in managing millions of concurrent threads, as seen in GPUs (Graphics Processing Units), and requires efficient use of intra-chip and inter-chip parallelism through shared and distributed memory systems.
 
 
-## FLYNN'S TAXONOMY: Classification of parallel computers
+## Flynn's Taxonomy: Classification of Parallel Computers
 
 **SISD (Single Instruction, Single Data)**: processing one instruction on one data stream at a time. Example: IBM 360 the oldest computer architecture type.
 
